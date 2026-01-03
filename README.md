@@ -39,3 +39,46 @@ It is designed to help defenders detect:
 ---
 
 ## 🧪 Sample Report Output
+
+---
+
+## 🧠 MITRE ATT&CK Mapping
+
+- **T1548** – Abuse Elevation Control Mechanism
+- **T1059** – Command and Scripting Interpreter
+- **T1078** – Valid Accounts
+
+---
+
+## 🛠️ Tools & Technologies
+
+- Python 3  
+- Linux (Kali / Ubuntu)  
+- Log analysis  
+- Regular expressions  
+- Git & GitHub
+
+---
+
+## ⚠️ Limitations
+
+- Operates on static log files (no real-time monitoring)  
+- No SIEM integration  
+- Pattern-based detection may miss novel techniques
+
+---
+
+## 🚀 Future Improvements
+
+- Real-time monitoring using syslog  
+- JSON or CSV output for SIEM ingestion  
+- Email or Slack alerting  
+- GeoIP enrichment  
+- Docker deployment
+
+---
+
+## 🎯 Why This Project Matters
+
+Privilege escalation is a critical step in most Linux-based attacks.  
+This project demonstrates how defenders can detect early indicators of compromise by monitoring authentication and privilege usage patterns.
