@@ -1,6 +1,32 @@
 #!/usr/bin/env python3
 
 import re
+# Commands that are commonly abused for privilege escalation / credential access
+HIGH_RISK_KEYWORDS = [
+    "/etc/shadow",
+    "/etc/passwd",
+    "chmod 777",
+    "chown root",
+    "useradd",
+    "usermod",
+    "visudo",
+    "passwd ",
+    "ssh/authorized_keys",
+    "wget ",
+    "curl ",
+    "nc ",
+    "netcat",
+    "bash",
+    "sh",
+    "python",
+    "perl",
+    "ruby",
+    "sudo su",
+    "su -",
+]
+def is_high_risk(command: str) -> bool:
+    command = command.lower()
+    return any(keyword.lower() in command for keyword in HIGH_RISK_KEYWORDS)
 from collections import defaultdict
 from datetime import datetime
 
@@ -65,6 +91,3 @@ if __name__ == "__main__":
     analyze_auth_log()
 
 
-Jan 03 10:01:12 kali sudo: twinzi : TTY=pts/0 ; PWD=/home/twinzi ; USER=root ; COMMAND=/usr/bin/apt update
-Jan 03 10:02:10 kali sudo: twinzi : TTY=pts/0 ; PWD=/home/twinzi ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow
-Jan 03 10:03:05 kali su: pam_unix(su:session): session opened for user root by twinzi(uid=1000)
